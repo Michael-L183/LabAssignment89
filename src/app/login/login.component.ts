@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ToastService } from '../toast/toast.service';
 import {HttpService} from '../../shared-service/http.service';
+
 export interface IUser {
   id?: number;
   email: string;
