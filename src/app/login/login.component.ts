@@ -14,6 +14,8 @@ export interface IUser {
 })
 export class LoginComponent implements OnInit {
   user: IUser = { email: null, password: null };
+  currentUser = {};
+  loggedIn = false;
   constructor(
     private router: Router,
     private toastService: ToastService,
@@ -22,7 +24,14 @@ export class LoginComponent implements OnInit {
   }
 
   ngOnInit() {
-
+    const token = localStorage.getItem('id_token');
+    console.log('from login ngOnInit token: ', token);
+    if(token != null){
+      this.loggedIn = true;
+      this.router.navigate(['']);
+    }else{
+      this.loggedIn = false;
+    }
   }
 
   async login(user: IUser){

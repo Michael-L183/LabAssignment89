@@ -23,14 +23,24 @@ export class HttpService {
   // post('car', {make: 'Nissan', model: '350z'});
   async post(path: string, payload: any){
     const resp = await this.http.post(this.apiURL + path, payload, this.headers).toPromise();
-    console.log('from http service post() resp: ', resp.json())
+    console.log('from http service post() resp: ', resp.json());
     return resp.json();
   }
-  put(){
-
+  //put('car/id/1', {make: 'Toyota', model: 'Celica'});
+  async put(path: string, payload: any){
+    const resp = await this.http.put(this.apiURL + path, payload, this.headers).toPromise();
+    console.log('from http service put()', resp.json());
+    return resp.json();
   }
-  delete(){
-
+  //delete car
+  async delete(path: string){
+    const resp = await this.http.delete();
+  }
+  //logout
+  async logout(){
+    const resp = await this.http.get(this.apiURL + 'user/logout', this.headers).toPromise();
+    console.log('from http service logout()', resp.json());
+    return resp.json();
   }
 
   get headers() {
